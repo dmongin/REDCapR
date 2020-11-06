@@ -8,6 +8,8 @@
 #' project.  Required.
 #' @param token The user-specific string that serves as the password for a
 #' project.  Required.
+#' @param overwrite The overwritte behavior: "normal": blank value do not overwritte
+#' values in redcap, "overwrite": blank value overwritte existing values on redcap
 #' @param convert_logical_to_integer If `TRUE`, all [base::logical] columns
 #' in `ds` are cast to an integer before uploading to REDCap.
 #' Boolean values are typically represented as 0/1 in REDCap radio buttons.
@@ -84,6 +86,7 @@ redcap_write_oneshot <- function(
   ds,
   redcap_uri,
   token,
+  overwrite = "normal" # "overwrite"
   convert_logical_to_integer    = FALSE,
   verbose         = TRUE,
   config_options  = NULL
@@ -126,7 +129,7 @@ redcap_write_oneshot <- function(
     #  *overwrite* - blank/empty values are valid and will overwrite data
 
     data                = csv,
-    overwriteBehavior   = "overwrite",
+    overwriteBehavior   = overwrite,
     returnContent       = "ids",
     returnFormat        = "csv"
   )
