@@ -86,7 +86,7 @@ redcap_write_oneshot <- function(
   ds,
   redcap_uri,
   token,
-  overwrite = "normal" # "overwrite"
+  overwrite = "normal", # "overwrite"
   convert_logical_to_integer    = FALSE,
   verbose         = TRUE,
   config_options  = NULL
